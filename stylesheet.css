@@ -352,3 +352,36 @@ a{color:inherit}
   .search input{width:100%}
   .form-row{grid-template-columns:1fr}
 }
+/* ===========================
+   Fix: Topbar hide/show without gaps or overlap
+   =========================== */
+
+:root{
+  --topbar-h: 44px;
+}
+
+.header{
+  top: var(--topbar-h);
+  transition: top .25s ease;
+}
+
+.topbar{
+  max-height: 80px;
+  overflow: hidden;
+  transition:
+    transform .25s ease,
+    opacity .25s ease,
+    max-height .25s ease;
+}
+
+.topbar.is-hidden{
+  transform: translateY(-100%);
+  opacity: 0;
+  max-height: 0;
+  pointer-events: none;
+  border-bottom: 0;
+}
+
+html.topbar-hidden{
+  --topbar-h: 0px;
+}

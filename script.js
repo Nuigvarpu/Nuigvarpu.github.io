@@ -141,3 +141,42 @@ document.addEventListener("DOMContentLoaded", () => {
   updateCartCount();
   applyFilters();
 });
+
+// ===========================
+// Topbar hide on scroll (mobile) - FIX
+// ===========================
+document.addEventListener("DOMContentLoaded", () => {
+  let lastScrollY = window.scrollY;
+  const topbar = document.querySelector(".topbar");
+  const root = document.documentElement;
+
+  function hideTopbar(){
+    if (!topbar) return;
+    topbar.classList.add("is-hidden");
+    root.classList.add("topbar-hidden");
+  }
+
+  function showTopbar(){
+    if (!topbar) return;
+    topbar.classList.remove("is-hidden");
+    root.classList.remove("topbar-hidden");
+  }
+
+  window.addEventListener("scroll", () => {
+    if (window.innerWidth > 820) {
+      showTopbar();
+      return;
+    }
+
+    const currentScroll = window.scrollY;
+    if (Math.abs(currentScroll - lastScrollY) < 10) return;
+
+    if (currentScroll > lastScrollY && currentScroll > 60) {
+      hideTopbar();
+    } else {
+      showTopbar();
+    }
+
+    lastScrollY = currentScroll;
+  }, { passive: true });
+});
