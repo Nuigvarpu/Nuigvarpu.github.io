@@ -759,3 +759,172 @@ html[data-theme="dark"] .toast{
   .toolbar-btn{width:42px;height:42px}
   .custom-select{min-width:78px}
 }
+
+/* ===========================
+   V4 visual fixes: centered controls + readable dark mode
+   =========================== */
+.logo{
+  min-height:44px;
+}
+.logo__text{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:1.05;
+  text-align:center;
+}
+.logo__mark{
+  flex:0 0 auto;
+}
+.header__inner,
+.header__right,
+.cart,
+.toolbar-btn,
+.custom-select__btn{
+  align-items:center;
+}
+.toolbar-btn{
+  display:inline-grid;
+  place-items:center;
+  color:var(--ink);
+}
+.custom-select__btn{
+  min-height:44px;
+  display:flex;
+  justify-content:center;
+  text-align:center;
+  padding:10px 36px 10px 16px;
+  line-height:1;
+}
+.custom-select__btn::after{
+  right:15px;
+}
+.custom-select__list button{
+  text-align:center;
+  font-weight:850;
+}
+.currency,
+.cart{
+  min-height:44px;
+}
+.cart{
+  justify-content:center;
+  color:var(--ink);
+}
+.search input,
+.checkout-form input,
+.form-card input,
+.form-card textarea{
+  color:var(--ink);
+}
+.search input::placeholder,
+.checkout-form input::placeholder,
+.form-card input::placeholder,
+.form-card textarea::placeholder{
+  color:color-mix(in srgb, var(--muted) 75%, transparent);
+}
+
+/* Make membership banner keep contrast in dark mode */
+html[data-theme="dark"] .membership-banner__grid{
+  background:
+    radial-gradient(720px 300px at 22% 48%, rgba(154,140,255,.18), transparent 66%),
+    radial-gradient(520px 260px at 82% 46%, rgba(255,101,220,.16), transparent 64%),
+    linear-gradient(135deg, rgba(25,21,38,.98), rgba(36,31,52,.94));
+  border-color:rgba(255,255,255,.14);
+}
+html[data-theme="dark"] .membership-banner__visual{
+  background:
+    radial-gradient(340px 240px at 70% 30%, rgba(255,101,220,.20), transparent 70%),
+    radial-gradient(360px 260px at 28% 72%, rgba(0,194,255,.16), transparent 68%);
+}
+html[data-theme="dark"] .membership-banner__info h2,
+html[data-theme="dark"] .membership-banner__info p{
+  color:var(--ink);
+  text-shadow:none;
+}
+html[data-theme="dark"] .membership-banner__info p{
+  color:var(--muted);
+}
+
+/* Solid, readable cart drawer in dark mode */
+html[data-theme="dark"] .drawer{
+  background:rgba(5,4,10,.66);
+}
+html[data-theme="dark"] .drawer__panel{
+  background:linear-gradient(180deg, #171322, #211b30);
+  color:var(--ink);
+  border-left:1px solid rgba(255,255,255,.12);
+}
+html[data-theme="dark"] .cart-empty,
+html[data-theme="dark"] .cart-item,
+html[data-theme="dark"] .cart-summary,
+html[data-theme="dark"] .checkout-form{
+  background:#2b2538;
+  border-color:rgba(255,255,255,.14);
+  color:var(--ink);
+  box-shadow:0 14px 32px rgba(0,0,0,.25);
+}
+html[data-theme="dark"] .cart-item img{
+  background:#211b30;
+  border:1px solid rgba(255,255,255,.10);
+}
+html[data-theme="dark"] .summary-row{
+  color:var(--muted);
+}
+html[data-theme="dark"] .summary-row--total{
+  color:var(--ink);
+  border-top-color:rgba(255,255,255,.14);
+}
+html[data-theme="dark"] .qty button{
+  background:rgba(154,140,255,.28);
+  color:var(--ink);
+}
+html[data-theme="dark"] .qty input,
+html[data-theme="dark"] .checkout-form input,
+html[data-theme="dark"] .checkout-form .custom-select__btn{
+  background:#393246;
+  color:var(--ink);
+  border-color:rgba(255,255,255,.16);
+}
+html[data-theme="dark"] .remove-btn{
+  background:rgba(255,101,220,.20);
+  color:#ffd6f5;
+}
+html[data-theme="dark"] .card-brand{
+  background:rgba(154,140,255,.18);
+  border-color:rgba(154,140,255,.28);
+  color:var(--ink);
+}
+html[data-theme="dark"] .icon-btn{
+  background:#393246;
+  color:var(--ink);
+}
+html[data-theme="dark"] .custom-select__list button:hover{
+  background:rgba(154,140,255,.22);
+}
+
+/* Extra contrast for small chips/buttons in dark mode */
+html[data-theme="dark"] .kicker,
+html[data-theme="dark"] .chip,
+html[data-theme="dark"] .pill{
+  color:var(--ink);
+}
+html[data-theme="dark"] .btn--ghost,
+html[data-theme="dark"] .btn--small{
+  color:var(--ink);
+}
+html[data-theme="dark"] .price{
+  color:#cfc7ff;
+}
+html[data-theme="dark"] .rating{
+  color:#f7f4ff;
+}
+
+@media (max-width: 640px){
+  .logo__text{
+    max-width:68px;
+  }
+  .custom-select__btn{
+    padding-inline:12px 30px;
+  }
+}
