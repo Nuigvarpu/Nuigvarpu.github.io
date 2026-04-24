@@ -4,17 +4,15 @@
   <meta charset="UTF-8">
   <title>Moe Shop · Tienda Anime</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Moe Shop: tienda de artículos anime. Figuras, peluches, ropa y accesorios con estética kawaii.">
+  <meta name="description" content="Moe Shop: tienda de figuras anime con carrito funcional, catálogo completo y precios USD/COP.">
   <link rel="stylesheet" href="./stylesheet.css">
   <script defer src="./script.js"></script>
 </head>
-
 <body>
-
   <div class="topbar">
     <div class="container topbar__inner">
       <span class="topbar__pill">Envíos a toda Colombia</span>
-      <span class="topbar__text">Drops limitados · Pago seguro · Empaque bonito</span>
+      <span class="topbar__text">Catálogo completo · Carrito funcional · Precios USD/COP</span>
     </div>
   </div>
 
@@ -29,18 +27,38 @@
       <div class="header__right">
         <label class="search" aria-label="Buscar productos">
           <span class="search__icon" aria-hidden="true">⌕</span>
-          <input id="searchInput" type="search" placeholder="Busca: figuras, Miku, hoodies…" autocomplete="off">
+          <input id="searchInput" type="search" placeholder="Busca: Frieren, Miku, Maomao…" autocomplete="off">
         </label>
 
-        <button id="cartBtn" class="cart" type="button" aria-label="Carrito">
+        <button id="themeToggle" class="toolbar-btn" type="button" aria-label="Cambiar modo oscuro">🌙</button>
+
+        <div class="custom-select" data-custom-select="languageSelect">
+          <button class="custom-select__btn" type="button" aria-haspopup="listbox" aria-expanded="false">ES</button>
+          <div class="custom-select__list" role="listbox">
+            <button type="button" data-value="es" role="option">Español</button>
+            <button type="button" data-value="en" role="option">English</button>
+          </div>
+          <input id="languageSelect" type="hidden" value="es">
+        </div>
+
+        <div class="custom-select" data-custom-select="currencySelect">
+          <button class="custom-select__btn" type="button" aria-haspopup="listbox" aria-expanded="false">USD</button>
+          <div class="custom-select__list" role="listbox">
+            <button type="button" data-value="USD" role="option">USD</button>
+            <button type="button" data-value="COP" role="option">COP</button>
+          </div>
+          <input id="currencySelect" type="hidden" value="USD">
+        </div>
+
+        <button id="cartBtn" class="cart" type="button" aria-label="Abrir carrito">
           <span class="cart__icon" aria-hidden="true">🛒</span>
           <span class="cart__text">Carrito</span>
           <span id="cartCount" class="cart__count" aria-label="0 artículos">0</span>
         </button>
 
         <nav class="nav" aria-label="Navegación">
-          <a href="#catalogo">Catálogo</a>
           <a href="#beneficios">Beneficios</a>
+          <a href="#catalogo">Catálogo</a>
           <a href="#contacto">Contacto</a>
         </nav>
       </div>
@@ -51,193 +69,91 @@
     <section class="hero" aria-label="Portada">
       <div class="container hero__grid">
         <div class="hero__copy">
-          <p class="kicker">Tienda anime · Kawaii · Coleccionables</p>
-          <h1>Tu rincón otaku, pero con estética premium</h1>
-          <p class="lead">Figuras, peluches, ropa y accesorios inspirados en tus series favoritas.
-            Drops limitados, empaques bonitos y soporte humano.</p>
+          <p class="kicker">Tienda anime · Figuras · Coleccionables</p>
+          <h1>Tu rincón otaku con carrito de verdad</h1>
+          <p class="lead">Agrega productos, cambia cantidades, selecciona qué pagar y mira los precios convertidos entre dólares y pesos colombianos.</p>
           <div class="hero__cta">
-            <a class="btn btn--primary" href="#catalogo">Ver catálogo</a>
-            <a class="btn btn--ghost" href="#contacto">Pedir por encargo</a>
+            <a class="btn btn--primary" href="#catalogo">Ver catálogo completo</a>
+            <button class="btn btn--ghost" id="openCartHero" type="button">Ver carrito</button>
           </div>
           <div class="hero__chips" aria-label="Características">
-            <span class="chip">⭐ Original / réplica premium</span>
-            <span class="chip">🎁 Empaque regalo</span>
-            <span class="chip">⚡ Respuesta rápida</span>
+            <span class="chip">💱 Tasa USD/COP por API</span>
+            <span class="chip">✅ Pago por productos seleccionados</span>
+            <span class="chip">🧾 Resumen de compra</span>
           </div>
+          <p id="rateInfo" class="muted small rate-info">Cargando tasa de cambio…</p>
         </div>
 
         <div class="hero__card" aria-label="Producto destacado">
           <div class="heroCard">
-            <div class="heroCard__badge">DROP</div>
+            <div class="heroCard__badge">DESTACADO</div>
             <div class="heroCard__img">
               <img src="./Img/Frieren.webp" alt="Figura de Frieren" loading="lazy">
             </div>
             <div class="heroCard__meta">
               <div>
-                <h3>Frieren · Campo</h3>
-                <p class="muted">Figura 1/7 · Base incluida</p>
+                <h3>Frieren · Luna</h3>
+                <p class="muted">Figura · Base incluida</p>
               </div>
               <div class="heroCard__price">
-                <span class="price">$39.99</span>
+                <span class="price" data-price-usd="42.99">$42.99</span>
                 <span class="muted">Stock: 6</span>
               </div>
             </div>
-            <button class="btn btn--wide" data-add-to-cart data-name="Frieren · Campo" data-price="39.99">Agregar al carrito</button>
+            <button class="btn btn--wide" data-add-product="frieren-luna">Agregar al carrito</button>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="catalogo" class="section section--soft" aria-label="Catálogo">
+    <section id="beneficios" class="membership-banner" aria-label="Por qué deberías comprar con nosotros">
+      <div class="container membership-banner__grid">
+        <div class="membership-banner__info">
+          <span class="membership-banner__tag">Compra segura · Anime shop</span>
+          <h2>Más que una tienda, tu vitrina de Japón</h2>
+          <p>Una sección tipo promoción para destacar confianza, beneficios y el lema de la marca. La imagen de la derecha es placeholder para cambiarla más adelante.</p>
+          <div class="membership-banner__actions">
+            <a class="btn btn--primary" href="#catalogo">Comprar ahora</a>
+            <button class="btn btn--ghost" id="openCartBenefits" type="button">Ver carrito</button>
+          </div>
+        </div>
+
+        <div class="membership-banner__visual">
+          <img src="./Img/por-que-comprar.svg" alt="Japón al alcance de tus manos: por qué deberías comprar con nosotros" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section id="catalogo" class="section section--soft" aria-label="Catálogo completo">
       <div class="container">
         <div class="section__head">
           <div>
-            <h2>Catálogo</h2>
-            <p class="muted">Filtra por categoría o busca por nombre. (Demo: sin backend)</p>
+            <h2>Catálogo completo</h2>
+            <p class="muted">Todos los productos disponibles con precio dinámico USD/COP.</p>
           </div>
 
           <div class="filters" role="tablist" aria-label="Filtros">
             <button class="pill is-active" data-filter="all" type="button">Todo</button>
-            <button class="pill" data-filter="figuras" type="button">Figuras</button>
-            <button class="pill" data-filter="peluches" type="button">Peluches</button>
-            <button class="pill" data-filter="ropa" type="button">Ropa</button>
-            <button class="pill" data-filter="accesorios" type="button">Accesorios</button>
+            <button class="pill" data-filter="frieren" type="button">Frieren</button>
+            <button class="pill" data-filter="miku" type="button">Miku</button>
+            <button class="pill" data-filter="maomao" type="button">Maomao</button>
+            <button class="pill" data-filter="otras" type="button">Otras</button>
           </div>
         </div>
 
-        <div class="grid-productos" id="productGrid">
-          <!-- Productos demo: imágenes referencian archivos dentro de /Img -->
+        <div class="grid-productos" id="productGrid"></div>
 
-          <article class="producto" data-category="figuras" data-name="Frieren Campo" data-price="39.99">
-            <div class="producto__img">
-              <img src="./Img/FrierenCampo.jpg" alt="Frieren" loading="lazy">
-              <span class="badge">Nuevo</span>
-            </div>
-            <div class="producto__body">
-              <h3>Frieren · Campo</h3>
-              <p class="muted">Figura 1/7 · Base incluida</p>
-              <div class="producto__row">
-                <span class="price">$39.99</span>
-                <span class="rating" aria-label="4.8 de 5">★★★★★ <span class="muted">4.8</span></span>
-              </div>
-              <button class="btn btn--small" data-add-to-cart data-name="Frieren · Campo" data-price="39.99">Agregar</button>
-            </div>
-          </article>
-
-          <article class="producto" data-category="figuras" data-name="Miku Chibbi" data-price="29.99">
-            <div class="producto__img">
-              <img src="./Img/MikuChibbi.webp" alt="Miku" loading="lazy">
-              <span class="badge badge--alt">Kawaii</span>
-            </div>
-            <div class="producto__body">
-              <h3>Miku · Chibbi</h3>
-              <p class="muted">Mini figura · Edición pastel</p>
-              <div class="producto__row">
-                <span class="price">$29.99</span>
-                <span class="rating" aria-label="4.7 de 5">★★★★★ <span class="muted">4.7</span></span>
-              </div>
-              <button class="btn btn--small" data-add-to-cart data-name="Miku · Chibbi" data-price="29.99">Agregar</button>
-            </div>
-          </article>
-
-          <article class="producto" data-category="peluches" data-name="Peluche Frieren" data-price="19.90">
-            <div class="producto__img">
-              <img src="./Img/FrierenFlowerDance.webp" alt="Peluche inspirado en Frieren" loading="lazy">
-              <span class="badge">-10%</span>
-            </div>
-            <div class="producto__body">
-              <h3>Figura · Frieren</h3>
-              <p class="muted"> 40cm · Base incluida </p>
-              <div class="producto__row">
-                <span class="price">$19.90</span>
-                <span class="rating" aria-label="4.6 de 5">★★★★★ <span class="muted">4.6</span></span>
-              </div>
-              <button class="btn btn--small" data-add-to-cart data-name="Peluche · Frieren" data-price="19.90">Agregar</button>
-            </div>
-          </article>
-
-          <article class="producto" data-category="peluches" data-name="Peluche Miku" data-price="18.50">
-            <div class="producto__img">
-              <img src="./Img/MikuEscritorio.webp" alt="Peluche inspirado en Miku" loading="lazy">
-              <span class="badge badge--alt">Top</span>
-            </div>
-            <div class="producto__body">
-              <h3>Figura · Miku-Neko</h3>
-              <p class="muted">25cm · Base incluida</p>
-              <div class="producto__row">
-                <span class="price">$18.50</span>
-                <span class="rating" aria-label="4.9 de 5">★★★★★ <span class="muted">4.9</span></span>
-              </div>
-              <button class="btn btn--small" data-add-to-cart data-name="Peluche · Miku" data-price="18.50">Agregar</button>
-            </div>
-          </article>
-
-          <article class="producto" data-category="ropa" data-name="Hoodie Kawaii" data-price="44.00">
-            <div class="producto__img">
-              <img src="./Img/Ubelcasual.webp" alt="Hoodie kawaii" loading="lazy">
-              <span class="badge">Preventa</span>
-            </div>
-            <div class="producto__body">
-              <h3>Ubel · Day off</h3>
-              <p class="muted">Figura · 40cm</p>
-              <div class="producto__row">
-                <span class="price">$44.00</span>
-                <span class="rating" aria-label="4.5 de 5">★★★★★ <span class="muted">4.5</span></span>
-              </div>
-              <button class="btn btn--small" data-add-to-cart data-name="Hoodie · Kawaii" data-price="44.00">Agregar</button>
-            </div>
-          </article>
-
-          <article class="producto" data-category="ropa" data-name="Camiseta Minimal" data-price="22.00">
-            <div class="producto__img">
-              <img src="./Img/HagakureEscolar.jpg" alt="Camiseta minimal" loading="lazy">
-              <span class="badge badge--alt">Minimal</span>
-            </div>
-            <div class="producto__body">
-              <h3>Hagakure · Clase  1A</h3>
-              <p class="muted">Figura · 30cm</p>
-              <div class="producto__row">
-                <span class="price">$22.00</span>
-                <span class="rating" aria-label="4.4 de 5">★★★★★ <span class="muted">4.4</span></span>
-              </div>
-              <button class="btn btn--small" data-add-to-cart data-name="Camiseta · Minimal" data-price="22.00">Agregar</button>
-            </div>
-          </article>
-
-          <article class="producto" data-category="accesorios" data-name="Llavero Chibi" data-price="6.90">
-            <div class="producto__img">
-              <img src="./Img/MaomaoChibbi.webp" alt="Llavero chibi" loading="lazy">
-              <span class="badge">2x1</span>
-            </div>
-            <div class="producto__body">
-              <h3>Maomao · Chibi</h3>
-              <p class="muted">Acrílico · 25cm</p>
-              <div class="producto__row">
-                <span class="price">$6.90</span>
-                <span class="rating" aria-label="4.7 de 5">★★★★★ <span class="muted">4.7</span></span>
-              </div>
-              <button class="btn btn--small" data-add-to-cart data-name="Llavero · Chibi" data-price="6.90">Agregar</button>
-            </div>
-          </article>
-
-          <article class="producto" data-category="accesorios" data-name="Pin Enamel" data-price="8.50">
-            <div class="producto__img">
-              <img src="./Img/Shinobu.webp" alt="Pin enamel" loading="lazy">
-              <span class="badge badge--alt">Brilla</span>
-            </div>
-            <div class="producto__body">
-              <h3>Shinobu Kocho · Aeleteo de mariposa</h3>
-              <p class="muted">Figura · 45cm · Base incluida </p>
-              <div class="producto__row">
-                <span class="price">$8.50</span>
-                <span class="rating" aria-label="4.8 de 5">★★★★★ <span class="muted">4.8</span></span>
-              </div>
-              <button class="btn btn--small" data-add-to-cart data-name="Pin · Enamel" data-price="8.50">Agregar</button>
-            </div>
-          </article>
+        <div id="emptyState" class="empty" hidden>
+          <div>
+            <strong>No encontré productos con ese filtro.</strong>
+            <p class="muted">Prueba con otro nombre o vuelve a “Todo”.</p>
+          </div>
+          <button class="btn btn--ghost" id="resetBtn" type="button">Limpiar filtros</button>
         </div>
+      </div>
     </section>
-<section id="contacto" class="section contact" aria-label="Contacto">
+
+    <section id="contacto" class="section contact" aria-label="Contacto">
       <div class="container">
         <div class="section__head">
           <div>
@@ -245,7 +161,6 @@
             <p class="muted">¿Buscas un personaje específico? Pide por encargo y te cotizamos.</p>
           </div>
         </div>
-
         <div class="contact__grid">
           <form class="form-card" id="contactForm">
             <div class="form-row">
@@ -256,14 +171,13 @@
             <button class="btn btn--primary" type="submit">Enviar</button>
             <p class="muted small">*Este formulario es demo. No envía datos a ningún servidor.</p>
           </form>
-
           <aside class="contact__card" aria-label="Información">
             <h3>Atajos</h3>
             <ul class="list">
               <li><span>📍</span> Santa Marta / Envíos nacionales</li>
               <li><span>⏱️</span> Lun–Sáb: 10:00–19:00</li>
-              <li><span>💳</span> Transferencia / Tarjeta / Contraentrega*</li>
-            </ul> 
+              <li><span>💳</span> Tarjeta / Transferencia / Contraentrega*</li>
+            </ul>
           </aside>
         </div>
       </div>
@@ -279,12 +193,11 @@
             <span class="logo__text">Moe Shop</span>
             <span class="logo__spark">✨</span>
           </div>
-          <p class="muted">Figuras, peluches y cositas anime con vibra pastel.</p>
+          <p class="muted">Figuras y cositas anime con vibra pastel.</p>
         </div>
         <div>
           <h4>Secciones</h4>
           <a href="#catalogo">Catálogo</a><br>
-          <a href="#beneficios">Beneficios</a><br>
           <a href="#contacto">Contacto</a>
         </div>
         <div>
@@ -296,9 +209,61 @@
     </div>
   </footer>
 
+  <aside id="cartDrawer" class="drawer" aria-label="Carrito" aria-hidden="true">
+    <div class="drawer__panel">
+      <div class="drawer__head">
+        <div>
+          <h2>Carrito</h2>
+          <p class="muted small">Marca solo los productos que quieres pagar.</p>
+        </div>
+        <button class="icon-btn" id="closeCartBtn" type="button" aria-label="Cerrar carrito">×</button>
+      </div>
+
+      <div id="cartItems" class="cart-items"></div>
+
+      <div class="cart-summary">
+        <div class="summary-row"><span>Seleccionados</span><strong id="selectedCount">0</strong></div>
+        <div class="summary-row"><span>Subtotal</span><strong id="subtotalText">$0.00</strong></div>
+        <div class="summary-row"><span>Envío</span><strong id="shippingText">$0.00</strong></div>
+        <div class="summary-row summary-row--total"><span>Total a pagar</span><strong id="totalText">$0.00</strong></div>
+      </div>
+
+      <form id="checkoutForm" class="checkout-form">
+        <h3>Datos de pago</h3>
+        <input type="text" id="buyerName" placeholder="Nombre completo" required>
+        <input type="email" id="buyerEmail" placeholder="Correo" required>
+        <div class="custom-select custom-select--wide" data-custom-select="paymentMethod">
+          <button class="custom-select__btn" type="button" aria-haspopup="listbox" aria-expanded="false">Selecciona método de pago</button>
+          <div class="custom-select__list" role="listbox">
+            <button type="button" data-value="Contra entrega a envíos nacionales" role="option">Contra entrega a envíos nacionales</button>
+            <button type="button" data-value="Tarjeta de crédito" role="option">Tarjeta de crédito</button>
+            <button type="button" data-value="Tarjeta de débito" role="option">Tarjeta de débito</button>
+            <button type="button" data-value="PayPal" role="option">PayPal</button>
+          </div>
+          <input id="paymentMethod" type="hidden" required>
+        </div>
+
+        <div id="cardFields" class="card-fields" hidden>
+          <input type="text" id="cardNumber" inputmode="numeric" autocomplete="cc-number" placeholder="Número de tarjeta">
+          <div class="form-row">
+            <input type="text" id="cardExpiry" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/AA">
+            <input type="text" id="cardCvv" inputmode="numeric" autocomplete="cc-csc" placeholder="CVV">
+          </div>
+          <p id="cardBrand" class="card-brand muted small">Tipo de tarjeta: sin detectar</p>
+        </div>
+
+        <div id="paypalFields" class="card-fields" hidden>
+          <input type="email" id="paypalEmail" placeholder="Correo de PayPal">
+        </div>
+        <button class="btn btn--primary btn--wide" type="submit">Pagar seleccionados</button>
+        <button class="btn btn--ghost btn--wide" id="clearCartBtn" type="button">Vaciar carrito</button>
+        <p class="muted small">*Pago demo: genera confirmación, no cobra dinero real.</p>
+      </form>
+    </div>
+  </aside>
+
   <div id="toast" class="toast" role="status" aria-live="polite" hidden>
     <span id="toastText">Agregado al carrito</span>
   </div>
-
 </body>
 </html>
