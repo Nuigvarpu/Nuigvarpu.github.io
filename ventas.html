@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Moe Shop · Base de datos de ventas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    document.documentElement.dataset.theme = localStorage.getItem('moe_theme') || 'light';
+    document.documentElement.lang = localStorage.getItem('moe_lang') || 'es';
+  </script>
+  <link rel="stylesheet" href="./stylesheet.css">
+  <script defer src="./ventas.js"></script>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <span class="topbar__pill" data-i18n="topPill">Base de datos local</span>
+      <span class="topbar__text" data-i18n="topText">Ventas · Inventario · Pagos demo</span>
+    </div>
+  </div>
+
+  <header class="header admin-header" id="inicio">
+    <div class="container header__inner">
+      <a class="logo" href="./index.html#inicio" aria-label="Volver al inicio">
+        <span class="logo__mark">M</span>
+        <span class="logo__text">Moe Shop</span>
+        <span class="logo__spark">✨</span>
+      </a>
+
+      <div class="header__right admin-toolbar">
+        <button id="themeToggle" class="toolbar-btn" type="button" aria-label="Cambiar modo oscuro">🌙</button>
+
+        <div class="custom-select" data-custom-select="languageSelect">
+          <button class="custom-select__btn" type="button" aria-haspopup="listbox" aria-expanded="false">ES</button>
+          <div class="custom-select__list" role="listbox">
+            <button type="button" data-value="es" role="option">Español</button>
+            <button type="button" data-value="en" role="option">English</button>
+          </div>
+          <input id="languageSelect" type="hidden" value="es">
+        </div>
+
+        <nav class="nav" aria-label="Navegación">
+          <a href="./index.html#catalogo" data-i18n="navCatalog">Catálogo</a>
+          <a href="./index.html" data-i18n="navHome">Inicio</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <section class="container admin-hero">
+      <p class="kicker" data-i18n="kicker">Base de datos local · Demo</p>
+      <h1 data-i18n="title">Registro de ventas</h1>
+      <p class="lead" data-i18n="lead">Consulta las ventas guardadas desde el carrito, revisa totales por periodo y exporta la información de la base de datos local.</p>
+      <div class="hero__cta admin-actions">
+        <button class="btn btn--primary" id="exportBtn" type="button" data-i18n="export">Exportar JSON</button>
+        <button class="btn btn--ghost" id="clearSalesBtn" type="button" data-i18n="clear">Borrar ventas</button>
+      </div>
+    </section>
+
+    <section class="container admin-grid">
+      <article class="admin-card">
+        <div class="section__head admin-section-head">
+          <div>
+            <h2 data-i18n="summary">Resumen</h2>
+            <p class="muted small" id="filterHelp">Mostrando todas las ventas registradas.</p>
+          </div>
+          <div class="filters admin-filters" role="tablist" aria-label="Filtros de ventas">
+            <button class="pill is-active" data-sales-filter="all" type="button" data-i18n="filterAll">Todas las ventas</button>
+            <button class="pill" data-sales-filter="year" type="button" data-i18n="filterYear">Ventas anuales</button>
+            <button class="pill" data-sales-filter="month" type="button" data-i18n="filterMonth">Ventas mensuales</button>
+            <button class="pill" data-sales-filter="week" type="button" data-i18n="filterWeek">Ventas semanales</button>
+          </div>
+        </div>
+        <div class="stats-grid">
+          <div><span data-i18n="sales">Ventas</span><strong id="salesCount">0</strong></div>
+          <div><span data-i18n="totalUsd">Total USD</span><strong id="totalUsd">$0.00</strong></div>
+          <div><span data-i18n="totalCop">Total COP</span><strong id="totalCop">$0</strong></div>
+        </div>
+      </article>
+
+      <article class="admin-card">
+        <h2 data-i18n="productsTitle">Productos registrados</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th data-i18n="product">Producto</th><th data-i18n="category">Categoría</th><th data-i18n="priceUsd">Precio USD</th><th data-i18n="stock">Stock</th></tr></thead>
+            <tbody id="productsTable"></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="admin-card admin-card--wide">
+        <h2 data-i18n="salesTitle">Ventas realizadas</h2>
+        <div id="salesList" class="sales-list"></div>
+      </article>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden>
+    <span id="toastText">Listo</span>
+  </div>
+</body>
+</html>

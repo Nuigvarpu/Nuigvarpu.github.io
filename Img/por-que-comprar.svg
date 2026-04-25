@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="420" viewBox="0 0 820 420" role="img" aria-labelledby="title desc">
+  <title id="title">Japón al alcance de tus manos</title>
+  <desc id="desc">Información visual sobre beneficios de comprar en Moe Shop</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff7fb"/>
+      <stop offset="0.52" stop-color="#f2ecff"/>
+      <stop offset="1" stop-color="#e7fbff"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7a6cff"/>
+      <stop offset="1" stop-color="#ff4fd8"/>
+    </linearGradient>
+    <radialGradient id="dot" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ff4fd8" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#ff4fd8" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#12131a" flood-opacity=".12"/>
+    </filter>
+  </defs>
+  <rect width="820" height="420" rx="34" fill="url(#bg)"/>
+  <circle cx="720" cy="60" r="145" fill="url(#dot)"/>
+  <circle cx="95" cy="360" r="150" fill="#7a6cff" opacity=".08"/>
+  <path d="M585 0c-42 84-39 148 9 194s51 108 9 186h217V0z" fill="#fff" opacity=".45"/>
+  <g filter="url(#shadow)">
+    <rect x="46" y="46" width="728" height="328" rx="28" fill="rgba(255,255,255,.78)" stroke="rgba(18,19,26,.08)"/>
+  </g>
+  <text x="78" y="104" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="44" font-weight="900" fill="#12131a">Japón al alcance</text>
+  <text x="78" y="152" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="44" font-weight="900" fill="#12131a">de tus manos</text>
+  <rect x="78" y="174" width="310" height="10" rx="5" fill="url(#accent)" opacity=".9"/>
+  <text x="78" y="220" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="20" font-weight="800" fill="#5a5f73">¿Por qué comprar con nosotros?</text>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif" font-size="22" font-weight="850" fill="#12131a">
+    <g transform="translate(80 258)">
+      <circle cx="18" cy="18" r="18" fill="url(#accent)"/>
+      <text x="18" y="26" text-anchor="middle" font-size="20" fill="#fff">✓</text>
+      <text x="52" y="25">Productos seleccionados y de calidad</text>
+    </g>
+    <g transform="translate(80 310)">
+      <circle cx="18" cy="18" r="18" fill="url(#accent)"/>
+      <text x="18" y="26" text-anchor="middle" font-size="20" fill="#fff">✓</text>
+      <text x="52" y="25">Precios claros en USD y pesos colombianos</text>
+    </g>
+  </g>
+  <g transform="translate(530 96)">
+    <rect x="0" y="0" width="184" height="210" rx="30" fill="#12131a" opacity=".08"/>
+    <rect x="18" y="-10" width="184" height="210" rx="30" fill="#fff" stroke="rgba(18,19,26,.10)"/>
+    <circle cx="110" cy="72" r="44" fill="#d6f6ff"/>
+    <path d="M72 151c18-34 55-44 82-19 18 17 30 21 48 13v55H38v-32c10 0 23-5 34-17z" fill="#ffd1ea"/>
+    <path d="M63 62c22-52 93-51 111-1-23-15-39-14-51 6-20-17-37-19-60-5z" fill="#7a6cff" opacity=".78"/>
+    <text x="110" y="252" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="17" font-weight="900" fill="#5a5f73">Placeholder</text>
+  </g>
+</svg>

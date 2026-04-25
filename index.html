@@ -12,7 +12,7 @@
   <div class="topbar">
     <div class="container topbar__inner">
       <span class="topbar__pill">Envíos a toda Colombia</span>
-      <span class="topbar__text">Catálogo completo · Carrito funcional · Precios USD/COP</span>
+      <span class="topbar__text">Figuras · Coleccionables · Japón al alcance de tus manos</span>
     </div>
   </div>
 
@@ -60,6 +60,7 @@
           <a href="#beneficios">Beneficios</a>
           <a href="#catalogo">Catálogo</a>
           <a href="#contacto">Contacto</a>
+          <a href="./ventas.html">Ventas</a>
         </nav>
       </div>
     </div>
@@ -70,16 +71,16 @@
       <div class="container hero__grid">
         <div class="hero__copy">
           <p class="kicker">Tienda anime · Figuras · Coleccionables</p>
-          <h1>Tu rincón otaku con carrito de verdad</h1>
-          <p class="lead">Agrega productos, cambia cantidades, selecciona qué pagar y mira los precios convertidos entre dólares y pesos colombianos.</p>
+          <h1>Figuras anime y coleccionables en un solo lugar</h1>
+          <p class="lead">Explora figuras, preventas y coleccionables con estética japonesa, precios claros y envíos nacionales.</p>
           <div class="hero__cta">
             <a class="btn btn--primary" href="#catalogo">Ver catálogo completo</a>
             <button class="btn btn--ghost" id="openCartHero" type="button">Ver carrito</button>
           </div>
           <div class="hero__chips" aria-label="Características">
-            <span class="chip">💱 Tasa USD/COP por API</span>
-            <span class="chip">✅ Pago por productos seleccionados</span>
-            <span class="chip">🧾 Resumen de compra</span>
+            <span class="chip">💱 Precios en USD/COP</span>
+            <span class="chip">✅ Compra segura</span>
+            <span class="chip">🧾 Productos por encargo</span>
           </div>
           <p id="rateInfo" class="muted small rate-info">Cargando tasa de cambio…</p>
         </div>
@@ -129,7 +130,7 @@
         <div class="section__head">
           <div>
             <h2>Catálogo completo</h2>
-            <p class="muted">Todos los productos disponibles con precio dinámico USD/COP.</p>
+            <p class="muted">Explora el catálogo completo y filtra por personaje o colección. Los precios se actualizan según la moneda seleccionada.</p>
           </div>
 
           <div class="filters" role="tablist" aria-label="Filtros">
@@ -235,10 +236,10 @@
         <div class="custom-select custom-select--wide" data-custom-select="paymentMethod">
           <button class="custom-select__btn" type="button" aria-haspopup="listbox" aria-expanded="false">Selecciona método de pago</button>
           <div class="custom-select__list" role="listbox">
-            <button type="button" data-value="Contra entrega a envíos nacionales" role="option">Contra entrega a envíos nacionales</button>
-            <button type="button" data-value="Tarjeta de crédito" role="option">Tarjeta de crédito</button>
-            <button type="button" data-value="Tarjeta de débito" role="option">Tarjeta de débito</button>
-            <button type="button" data-value="PayPal" role="option">PayPal</button>
+            <button type="button" data-value="cod" role="option">Contra entrega a envíos nacionales</button>
+            <button type="button" data-value="credit" role="option">Tarjeta de crédito</button>
+            <button type="button" data-value="debit" role="option">Tarjeta de débito</button>
+            <button type="button" data-value="paypal" role="option">PayPal</button>
           </div>
           <input id="paymentMethod" type="hidden" required>
         </div>
@@ -250,6 +251,7 @@
             <input type="text" id="cardCvv" inputmode="numeric" autocomplete="cc-csc" placeholder="CVV">
           </div>
           <p id="cardBrand" class="card-brand muted small">Tipo de tarjeta: sin detectar</p>
+          <p id="cardPreview" class="card-preview" hidden></p>
         </div>
 
         <div id="paypalFields" class="card-fields" hidden>
@@ -259,6 +261,14 @@
         <button class="btn btn--ghost btn--wide" id="clearCartBtn" type="button">Vaciar carrito</button>
         <p class="muted small">*Pago demo: genera confirmación, no cobra dinero real.</p>
       </form>
+    </div>
+  </aside>
+
+
+  <aside id="detailsModal" class="details-modal" aria-hidden="true">
+    <div class="details-modal__panel" role="dialog" aria-modal="true" aria-label="Detalles del producto">
+      <button class="icon-btn details-close" type="button" data-close-details aria-label="Cerrar detalles">×</button>
+      <div id="detailsBody"></div>
     </div>
   </aside>
 

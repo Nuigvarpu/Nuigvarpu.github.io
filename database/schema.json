@@ -1,0 +1,16 @@
+{
+  "name": "Moe Shop Demo DB",
+  "version": 2,
+  "storage": "localStorage: moe_shop_db_v1",
+  "tables": {
+    "settings": ["defaultCurrency", "usdCopRate", "language", "shippingBaseUSD", "supportedPaymentMethods"],
+    "categories": ["id", "labelEs", "labelEn"],
+    "products": ["id", "sku", "name", "category", "priceUSD", "img", "descriptions", "rating", "stock", "tags", "details", "status", "updatedAt"],
+    "customers": ["id", "name", "email", "createdAt"],
+    "sales": ["id", "createdAt", "customerId", "status", "currency", "usdCopRate", "itemCount", "paymentId", "totalsUSD", "totalsCOP"],
+    "saleItems": ["id", "saleId", "productId", "sku", "name", "category", "qty", "unitPriceUSD", "totalUSD", "unitPriceCOP", "totalCOP"],
+    "payments": ["id", "saleId", "method", "methodLabel", "provider", "cardBrand", "cardFirst4", "amountUSD", "amountCOP", "status", "createdAt", "note"],
+    "inventoryMovements": ["id", "productId", "saleId", "type", "qtyChange", "createdAt"]
+  },
+  "privacy": "No se guarda el número completo de la tarjeta ni CVV. Solo se guarda la franquicia y los primeros 4 dígitos para referencia visual."
+}
